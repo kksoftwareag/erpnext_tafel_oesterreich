@@ -1,6 +1,5 @@
-## Erpnext Tafel Oesterreich
-
-New Frappe App for Die Tafel Oesterreich
+# erpnext_tafel_oesterreich
+ERPNext App der Tafel Österreich
 
 #### License
 
