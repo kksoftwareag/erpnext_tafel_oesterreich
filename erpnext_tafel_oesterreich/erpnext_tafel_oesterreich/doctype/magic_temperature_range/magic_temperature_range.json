@@ -1,0 +1,61 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:magic_temperature_range_name",
+ "creation": "2024-07-11 09:24:23.115609",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_nfrq",
+  "magic_temperature_range_name",
+  "magic_temperature_range"
+ ],
+ "fields": [
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "magic_temperature_range_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Temperaturbereich Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "magic_temperature_range",
+   "fieldtype": "Data",
+   "label": "Temperaturbereich"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "section_break_nfrq",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-07-11 09:35:34.423591",
+ "modified_by": "Administrator",
+ "module": "Erpnext Tafel Oesterreich",
+ "name": "Magic Temperature Range",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

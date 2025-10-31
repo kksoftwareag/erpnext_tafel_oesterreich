@@ -1,0 +1,400 @@
+<!-- add-breadcrumbs -->
+<!-- show-sidebar -->
+{% extends "templates/web.html" %}
+
+{% block script %}
+{{ super() }}
+<script>
+    frappe.boot = {{ boot }};
+</script>
+
+{{ include_script('libs.bundle.js') }}
+{{ include_script('controls.bundle.js') }}
+<script>
+    // Funktion zum Auslösen des Backend-Aufrufs
+    function handleBackendCall() {
+
+        let d = new frappe.ui.Dialog({
+            title: 'Neues Abonnement erstellen',
+            fields: [
+                {
+                    fieldtype: 'HTML',
+                    options: '<h5>Startdatum des Abonnements</h5>' // Hier wird der HTML-Inhalt angezeigt
+                },
+                {
+                    label: 'Wann soll das Abonnement starten?',
+                    fieldname: 'start_date',
+                    fieldtype: 'Date',
+                    description: 'Datum darf nicht auf die Vergangenheit gesetzt werden',
+                    reqd: 1
+                },
+                {
+                    fieldtype: "Column Break",
+                    fieldname: "column_break_1",
+                    label: __(""),
+                },
+                {
+                    fieldtype: 'HTML',
+                    options: '<h5>Enddatum des Abonnements</h5>' // Hier wird der HTML-Inhalt angezeigt
+                },
+                {
+                    label: 'Wann soll das Abonnement enden? (optional)',
+                    fieldname: 'end_date',
+                    fieldtype: 'Date',
+                    description: 'Enddatum bitte zu einem späteren Zeitpunkt als das Startdatum setzen'
+                },
+                {
+                    fieldtype: "Section Break",
+                    fieldname: "section_break_2",
+                    label: __(""),
+                },
+                {
+                    fieldtype: 'HTML',
+                    options: '<h5>Intervalle</h5>' // Hier wird der HTML-Inhalt angezeigt
+                },
+                {
+                    label: 'In welchem Intervall soll das Abonnement ausgeführt werden?',
+                    fieldname: 'intervall_of_subscription',
+                    fieldtype: 'Select',
+                    options: `{{ subscription_intervalls }}`,
+                    reqd: 1
+                },
+                {
+                    label: 'An welchem Tag soll das Abonnement ausgeführt werden?',
+                    fieldname: 'day_of_execution',
+                    fieldtype: 'Int',
+                    depends_on: 'eval: in_list(["Monatlich", "Quartalsweise", "Halbjährlich", "Jährlich"], doc.intervall_of_subscription) && !doc.execution_in_last_day_of_month',
+                    mandatory_depends_on: 'eval: in_list(["Monatlich", "Quartalsweise", "Halbjährlich", "Jährlich"], doc.intervall_of_subscription) && !doc.execution_in_last_day_of_month',
+                    description: 'Sollte das Abonnement am letzten Tag eines Monats ausgeführt werden, bitte einfach nur den unteren Haken setzen.',
+                },
+                {
+                    label: 'Abonnement am letzen Tag des Monats ausführen.',
+                    fieldname: 'execution_in_last_day_of_month',
+                    fieldtype: 'Check',
+                    depends_on: 'eval: in_list(["Monatlich"], doc.intervall_of_subscription)',
+                    mandatory_depends_on: 'eval: in_list(["Monatlich"], doc.intervall_of_subscription)',
+                },
+                {
+                    label: 'An welchen Tagen in der Woche soll das Abonnement ausgeführt werden?',
+                    fieldname: 'execution_weekly_table',
+                    fieldtype: 'Table',
+                    cannot_add_rows: false,
+                    in_place_edit: true,
+                    depends_on: 'eval: in_list(["Wöchentlich"], doc.intervall_of_subscription)',
+                    mandatory_depends_on: 'eval: in_list(["Wöchentlich"], doc.intervall_of_subscription)',
+                    fields: [
+                        { fieldname: 'Wochentag', fieldtype: 'Select', options: `{{ intervalls_weekly }}`, in_list_view: 1, label: 'Wochentag', reqd: 1 },
+                    ]
+                },
+                {
+                    fieldtype: "Section Break",
+                    fieldname: "section_break_3",
+                    label: __(""),
+                },
+                {
+                    fieldtype: 'HTML',
+                    options: '<h5>Artikel</h5>' // Hier wird der HTML-Inhalt angezeigt
+                },
+                {
+                    label: 'Welche Artikel sollen im Abonnement enthalten sein?',
+                    fieldname: 'item_table',
+                    fieldtype: 'Table',
+                    cannot_add_rows: false,
+                    in_place_edit: true,
+                    reqd: 1,
+                    fields: [
+                        { fieldname: 'item', fieldtype: 'Select', options: `{{ items }}`, in_list_view: 1, label: 'Artikel', reqd: 1 },
+                        { fieldname: 'qty', fieldtype: 'Int', default: 1, in_list_view: 1, label: 'Anzahl', reqd: 1 },
+                    ]
+                }
+            ],
+            size: 'extra-large', // small, large, extra-large
+            primary_action_label: 'Abonnement jetzt erstellen',
+            primary_action(values) {
+
+                frappe.confirm('Soll das Abonnement jetzt erstellt werden?',
+                    () => {
+
+                        // action to perform if Yes is selected
+                        frappe.call({
+                            method: "erpnext_tafel_oesterreich.www.subscription_web.generate_sales_invoice_and_auto_repeat",
+                            args: {
+                                data: values,
+                            },
+                            async: false,
+                            callback: function (r) {
+                                if (r.message) {
+                                    frappe.msgprint(r.message[1], (r.message[0] !== 0) ? "Erfolg 🥳" : "Etwas ist schief gelaufen 😨");
+                                }
+                            },
+                        });
+
+                    }, () => {
+                        // action to perform if No is selected
+                    })
+
+                d.hide();
+            }
+        });
+
+        d.show();
+    }
+
+
+    function handleEditCall(sales_order_doc_name, auto_repeat_doc_name) {
+
+        var sales_order_doc = null;
+        var auto_repeat_doc = null;
+
+        frappe.call({
+            method: "frappe.client.get",
+            args: {
+                doctype: "Sales Order", // Typ des Dokuments, das abgerufen werden soll
+                name: sales_order_doc_name // ID des Dokuments, das abgerufen werden soll
+            },
+            async: false,
+
+            callback: function (response) {
+                sales_order_doc = response.message; // Das abgerufene Dokument wird im response.message-Objekt gespeichert
+
+                frappe.call({
+                    method: "frappe.client.get",
+                    args: {
+                        doctype: "Auto Repeat", // Typ des Dokuments, das abgerufen werden soll
+                        name: auto_repeat_doc_name // ID des Dokuments, das abgerufen werden soll
+                    },
+                    async: false,
+                    callback: function (response) {
+                        auto_repeat_doc = response.message; // Das abgerufene Dokument wird im response.message-Objekt gespeichert
+
+                        var intervals = {
+                            "Daily": "Täglich",
+                            "Weekly": "Wöchentlich",
+                            "Monthly": "Monatlich",
+                            "Quarterly": "Quartalsweise",
+                            "Half-yearly": "Halbjährlich",
+                            "Yearly": "Jährlich"
+                        };
+
+                        var weekDays = {
+                            "Monday": "Montag",
+                            "Tuesday": "Dienstag",
+                            "Wednesday": "Mittwoch",
+                            "Thursday": "Donnerstag",
+                            "Friday": "Freitag",
+                            "Saturday": "Samstag"
+                        };
+
+                        let d = new frappe.ui.Dialog({
+                            title: 'Bestehendes Abonnement bearbeiten',
+                            fields: [
+                                {
+                                    fieldtype: 'HTML',
+                                    options: '<h5>Startdatum des Abonnements</h5>' // Hier wird der HTML-Inhalt angezeigt
+                                },
+                                {
+                                    label: 'Startdatum des Abonnements',
+                                    fieldname: 'start_date',
+                                    fieldtype: 'Date',
+                                    read_only: 1,
+                                    default: auto_repeat_doc.start_date, // Standardwert für das Feld
+                                    description: 'Startdatum lässt sich nicht bearbeiten',
+                                },
+                                {
+                                    fieldtype: "Column Break",
+                                    fieldname: "column_break_1",
+                                    label: __(""),
+                                },
+                                {
+                                    fieldtype: 'HTML',
+                                    options: '<h5>Enddatum des Abonnements</h5>' // Hier wird der HTML-Inhalt angezeigt
+                                },
+                                {
+                                    label: 'Wann soll das Abonnement enden? (optional)',
+                                    fieldname: 'end_date',
+                                    fieldtype: 'Date',
+                                    default: auto_repeat_doc.end_date,
+                                    description: 'Enddatum bitte zu einem späteren Zeitpunkt als das Startdatum setzen'
+                                },
+                                {
+                                    fieldtype: "Section Break",
+                                    fieldname: "section_break_2",
+                                    label: __(""),
+                                },
+                                {
+                                    fieldtype: 'HTML',
+                                    options: '<h5>Intervalle</h5>' // Hier wird der HTML-Inhalt angezeigt
+                                },
+                                {
+                                    label: 'Intervall des Abonnements',
+                                    fieldname: 'intervall_of_subscription',
+                                    fieldtype: 'Select',
+                                    options: `{{ subscription_intervalls }}`,
+                                    default: intervals[auto_repeat_doc.frequency],
+                                    reqd: 1
+                                },
+                                {
+                                    label: 'Ausführungstag des Abonnements',
+                                    fieldname: 'day_of_execution',
+                                    fieldtype: 'Int',
+                                    depends_on: 'eval: in_list(["Monatlich", "Quartalsweise", "Halbjährlich", "Jährlich"], doc.intervall_of_subscription) && !doc.execution_in_last_day_of_month',
+                                    mandatory_depends_on: 'eval: in_list(["Monatlich", "Quartalsweise", "Halbjährlich", "Jährlich"], doc.intervall_of_subscription) && !doc.execution_in_last_day_of_month',
+                                    description: 'Sollte das Abonnement am letzten Tag eines Monats ausgeführt werden, bitte einfach nur den unteren Haken setzen.',
+                                    default: auto_repeat_doc.repeat_on_day
+                                },
+                                {
+                                    label: 'Abonnement wird am letzten Tag des Monats ausgeführt.',
+                                    fieldname: 'execution_in_last_day_of_month',
+                                    fieldtype: 'Check',
+                                    depends_on: 'eval: in_list(["Monatlich"], doc.intervall_of_subscription)',
+                                    mandatory_depends_on: 'eval: in_list(["Monatlich"], doc.intervall_of_subscription)',
+                                    default: auto_repeat_doc.repeat_on_last_day
+                                },
+                                {
+                                    label: 'An welchen Tagen in der Woche soll das Abonnement ausgeführt werden?',
+                                    fieldname: 'execution_weekly_table',
+                                    fieldtype: 'Table',
+                                    cannot_add_rows: false,
+                                    in_place_edit: true,
+                                    depends_on: 'eval: in_list(["Wöchentlich"], doc.intervall_of_subscription)',
+                                    mandatory_depends_on: 'eval: in_list(["Wöchentlich"], doc.intervall_of_subscription)',
+                                    fields: [
+                                        { fieldname: 'Wochentag', fieldtype: 'Select', options: `{{ intervalls_weekly }}`, in_list_view: 1, label: 'Wochentag', reqd: 1 },
+                                    ],
+                                    data: auto_repeat_doc.repeat_on_days.map(function (x) { return { "Wochentag": weekDays[x.day] }; }),
+
+                                },
+                                {
+                                    fieldtype: "Section Break",
+                                    fieldname: "section_break_3",
+                                    label: __(""),
+                                },
+                                {
+                                    fieldtype: 'HTML',
+                                    options: '<h5>Artikel</h5>' // Hier wird der HTML-Inhalt angezeigt
+                                },
+                                {
+                                    label: 'Enthaltene Artikel des Abonnements',
+                                    fieldname: 'item_table',
+                                    fieldtype: 'Table',
+                                    cannot_add_rows: false,
+                                    in_place_edit: true,
+                                    reqd: 1,
+                                    fields: [
+                                        { fieldname: 'item', fieldtype: 'Select', options: `{{ items }}`, in_list_view: 1, label: 'Artikel', reqd: 1 },
+                                        { fieldname: 'qty', fieldtype: 'Int', default: 1, in_list_view: 1, label: 'Anzahl', reqd: 1 },
+                                    ],
+                                    data: sales_order_doc.items.map(function (x) { return { "item": x.item_code, 'qty': x.qty }; }),
+                                }
+                            ],
+                            size: 'extra-large', // small, large, extra-large
+                            primary_action_label: 'Abonnement jetzt updaten',
+                            primary_action(values) {
+
+                                frappe.confirm('Sollen die Änderungen für das Abonnement angewandt werden? (Wenn keine gemacht wurden, dann bitte einfach auf Nein klicken.)',
+                                    () => {
+
+                                        // action to perform if Yes is selected
+                                        frappe.call({
+                                            method: "erpnext_tafel_oesterreich.www.subscription_web.update_sales_invoice_and_auto_repeat",
+                                            args: {
+                                                data: values,
+                                                sales_order_template_name: sales_order_doc.name,
+                                                auto_repeat_doc_name: auto_repeat_doc.name
+                                            },
+                                            async: false,
+                                            callback: function (r) {
+                                                if (r.message) {
+                                                    frappe.msgprint(r.message[1], (r.message[0] !== 0) ? "Erfolg 🥳" : "Etwas ist schief gelaufen 😨");
+                                                }
+                                            },
+                                        });
+
+                                    }, () => {
+                                        // action to perform if No is selected
+                                    })
+                                console.log(values);
+                                d.hide();
+                            }
+                        });
+
+                        d.show();
+                    }
+                });
+            }
+        });
+
+
+
+    }
+
+</script>
+{% endblock %}
+
+
+
+{% block page_content %}
+
+<head>
+    <style>
+        .tooltip-content {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn btn-primary mx-auto d-block" onclick="handleBackendCall()">Neues Abonnement erstellen</button>
+    <div></div>
+    <h3>Meine aktiven Abonnements</h3>
+
+    {% for subscription in subscriptions %}
+
+    <div class="web-list-item transaction-list-item">
+
+        <div class="row align-items-center">
+
+            <div class="col-sm-4">
+
+                <span class="list-item-name font-weight-bold">Abonnement ID: {{ subscription.auto_repeat_doc.name
+                    }}</span>
+
+                <div class="small text-muted transaction-time">
+                    Startdatum: {{ subscription.auto_repeat_doc.start_date }}
+                </div>
+
+                {% if subscription.auto_repeat_doc.end_date %}
+                <div class="small text-muted transaction-time">
+                    Enddatum: {{ subscription.auto_repeat_doc.end_date }}
+                </div>
+                {% endif %}
+
+                <div class="small text-muted transaction-time">
+                    Nächste Ausführung am: {{ _(subscription.auto_repeat_doc.next_schedule_date) }}
+                </div>
+
+                <div class="small text-muted transaction-time">
+                    Intervall: {{ _(subscription.auto_repeat_doc.frequency) }}
+                </div>
+
+                <div class="small text-muted transaction-time">
+                    {{ subscription.sales_order_template_doc.items|length }} Artikel
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <button class="btn btn-secondary"
+                    onclick="handleEditCall(`{{ subscription.sales_order_template_doc.name }}`, `{{ subscription.auto_repeat_doc.name }}`)">Abonnement
+                    bearbeiten</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:MATERIAL-ISSUE-{#####}",
+ "creation": "2024-07-17 13:14:33.033089",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "magic_item",
+  "magic_warehouse_table",
+  "amended_from",
+  "magic_empties_check",
+  "magic_empties_table"
+ ],
+ "fields": [
+  {
+   "fieldname": "magic_item",
+   "fieldtype": "Link",
+   "label": "Ware",
+   "options": "Item"
+  },
+  {
+   "description": "Hier k\u00f6nnen alle Artikel gepflegt werden, welche aus dem Lager ausgebucht werden sollen. Dazu die auszubuchende Menge eintragen. Die Lagerbuchung wird erst nach dem Buchen des Dokuments vollzogen.",
+   "fieldname": "magic_warehouse_table",
+   "fieldtype": "Table",
+   "label": "Lager",
+   "options": "Magic Material Issue Table"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Magic Material Issue",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "magic_empties_check",
+   "fieldtype": "Check",
+   "label": "Leergut einbuchen"
+  },
+  {
+   "depends_on": "magic_empties_check",
+   "description": "Hier k\u00f6nnen Artikel mit der Gruppe \"Leergut\" gepflegt werden, welche in das Lager gebucht werden sollen. Dazu Artikel, Lager und Menge eintragen. Die Lagerbuchung wird erst nach dem Buchen des Dokuments vollzogen.",
+   "fieldname": "magic_empties_table",
+   "fieldtype": "Table",
+   "label": "Leergut",
+   "options": "Magic Empties Receipt Table"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "group": "Lagerbuchung",
+   "link_doctype": "Stock Entry",
+   "link_fieldname": "custom_matrial_issue_doc"
+  }
+ ],
+ "modified": "2024-07-25 14:09:45.339851",
+ "modified_by": "Administrator",
+ "module": "Erpnext Tafel Oesterreich",
+ "name": "Magic Material Issue",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

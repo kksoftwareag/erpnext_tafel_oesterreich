@@ -1,0 +1,32 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-04-17 13:27:00.031884",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "magic_user_link"
+ ],
+ "fields": [
+  {
+   "fieldname": "magic_user_link",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Nutzer",
+   "options": "User"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-04-17 13:30:36.655124",
+ "modified_by": "Administrator",
+ "module": "Erpnext Tafel Oesterreich",
+ "name": "Magic E-Mail Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

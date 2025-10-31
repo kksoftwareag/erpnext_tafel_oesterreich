@@ -1,0 +1,32 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-06-28 14:34:33.439695",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "magic_empties_item"
+ ],
+ "fields": [
+  {
+   "fieldname": "magic_empties_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Leergut Artikel",
+   "options": "Item"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-06-28 14:40:08.650609",
+ "modified_by": "Administrator",
+ "module": "Erpnext Tafel Oesterreich",
+ "name": "Magic Empties Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

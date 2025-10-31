@@ -1,0 +1,33 @@
+trigger:
+- master
+- release/*
+
+pool:
+  name: erp-build
+
+steps:
+- checkout: self
+  clean: true
+
+- task: Docker@2
+  displayName: login
+  inputs:
+    containerRegistry: Quay.io
+    command: login
+    
+- script: pre-commit run --all-files
+  displayName: pre-commit
+
+- script: BUILD_NUMBER=$(Build.BuildNumber) BRANCH=$(Build.SourceBranch) ./build.sh
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+  displayName: 'build and push'
+
+- script: BUILD_NUMBER=$(Build.BuildNumber) BRANCH=pr ./build.sh
+  condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'))
+  displayName: 'build PR'
+
+- task: Docker@2
+  displayName: logout
+  inputs:
+    containerRegistry: Quay.io
+    command: logout

@@ -1,0 +1,62 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-25 09:41:56.557600",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "leergut_section",
+  "magic_empties_table",
+  "magic_empties_item",
+  "magic_warehouse",
+  "magic_qty"
+ ],
+ "fields": [
+  {
+   "fieldname": "magic_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Lager",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "magic_qty",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Menge",
+   "reqd": 1
+  },
+  {
+   "fieldname": "magic_empties_table",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "magic_empties_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Leergut",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "leergut_section",
+   "fieldtype": "Section Break",
+   "label": "Leergut"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-26 08:52:04.767648",
+ "modified_by": "Administrator",
+ "module": "Erpnext Tafel Oesterreich",
+ "name": "Magic Empties Receipt Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

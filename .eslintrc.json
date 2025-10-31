@@ -1,0 +1,19 @@
+{
+    "root": true,
+    "env": {
+        "browser": true,
+        "es2022": true,
+        "jquery": true,
+        "node": true
+    },
+    "globals": {
+        "frappe": "readonly",
+        "erpnext": "readonly",
+        "__": "readonly"
+    },
+    "extends": [
+        "eslint:recommended",
+        "prettier"
+    ],
+    "ignorePatterns": ["src/**/*.test.js"]
+}

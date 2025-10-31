@@ -1,0 +1,792 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:magic_tourname",
+ "creation": "2024-04-29 14:01:56.415160",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "details_tab",
+  "magic_tour_type",
+  "magic_tourname",
+  "tourenplanung_section",
+  "magic_date_single_tour",
+  "magic_add_all_items_for_date",
+  "magic_pick_items_for_date",
+  "magic_items_table_for_date",
+  "magic_show_articles_for_date",
+  "magic_transport_weight_for_date",
+  "magic_vehicle_for_date",
+  "magic_permissible_load_kg_for_date",
+  "magic_vehicle_overloaded_for_date",
+  "custom_magic_driver",
+  "custom_magic_shift",
+  "custom_magic_passenger_one",
+  "custom_magic_passenger_two",
+  "custom_magic_notes_section",
+  "custom_magic_notes",
+  "magic_monday_section",
+  "magic_monday_date",
+  "magic_add_all_items_monday",
+  "magic_pick_items_monday",
+  "magic_monday_table",
+  "magic_show_articles_monday",
+  "magic_transport_weight_monday",
+  "magic_vehicle_monday",
+  "magic_permissible_load_kg_monday",
+  "magic_vehicle_overloaded_monday",
+  "custom_magic_driver_monday",
+  "custom_magic_shift_monday",
+  "custom_magic_passenger_one_monday",
+  "custom_magic_passenger_two_monday",
+  "custom_magic_monday_notes_section",
+  "custom_magic_monday_notes",
+  "magic_tuesday",
+  "magic_tuesday_date",
+  "magic_add_all_items_tuesday",
+  "magic_pick_items_tuesday",
+  "magic_tuesday_table",
+  "magic_show_articles_tuesday",
+  "magic_transport_weight_tuesday",
+  "magic_vehicle_tuesday",
+  "magic_permissible_load_kg_tuesday",
+  "magic_vehicle_overloaded_tuesday",
+  "custom_magic_driver_tuesday",
+  "custom_magic_shift_tuesday",
+  "custom_magic_passenger_one_tuesday",
+  "custom_magic_passenger_two_tuesday",
+  "custom_magic_tuesday_notes_section",
+  "custom_magic_tuesday_notes",
+  "magic_wednesday_section",
+  "magic_wednesday_date",
+  "magic_add_all_items_wednesday",
+  "magic_pick_items_wednesday",
+  "magic_wednesday_table",
+  "magic_show_articles_wednesday",
+  "magic_transport_weight_wednesday",
+  "magic_vehicle_wednesday",
+  "magic_permissible_load_kg_wednesday",
+  "magic_vehicle_overloaded_wednesday",
+  "custom_magic_driver_wednesday",
+  "custom_magic_shift_wednesday",
+  "custom_magic_passenger_one_wednesday",
+  "custom_magic_passenger_two_wednesday",
+  "custom_magic_wednesday_notes_section",
+  "custom_magic_wednesday_notes",
+  "magic_thursday_section",
+  "magic_thursday_date",
+  "magic_add_all_items_thursday",
+  "magic_pick_items_thursday",
+  "magic_thursday_table",
+  "magic_show_articles_thursday",
+  "magic_transport_weight_thursday",
+  "magic_vehicle_thursday",
+  "magic_permissible_load_kg_thursday",
+  "magic_vehicle_overloaded_thursday",
+  "custom_magic_driver_thursday",
+  "custom_magic_shift_thursday",
+  "custom_magic_passenger_one_thursday",
+  "custom_magic_passenger_two_thursday",
+  "custom_magic_thursday_notes_section",
+  "custom_magic_thursday_notes",
+  "magic_friday_section",
+  "magic_friday_date",
+  "magic_add_all_items_friday",
+  "magic_pick_items_friday",
+  "magic_friday_table",
+  "magic_show_articles_friday",
+  "magic_transport_weight_friday",
+  "magic_vehicle_friday",
+  "magic_permissible_load_kg_friday",
+  "magic_vehicle_overloaded_friday",
+  "custom_magic_driver_friday",
+  "custom_magic_shift_friday",
+  "custom_magic_passenger_one_friday",
+  "custom_magic_passenger_two_friday",
+  "custom_magic_friday_notes_section",
+  "custom_magic_friday_notes",
+  "tour_laden_tab",
+  "section_break_kkoc",
+  "column_break_ocld",
+  "magic_tour_link",
+  "magic_vehicle_template",
+  "magic_tour_table_display",
+  "magic_monday_check",
+  "magic_tuesday_check",
+  "magic_wednesday_check",
+  "magic_thursday_check",
+  "magic_friday_check",
+  "magic_fetch_tour",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "depends_on": "eval:doc.magic_tour_type==\"Tour f\u00fcr Woche planen\"",
+   "fieldname": "magic_monday_section",
+   "fieldtype": "Section Break",
+   "label": "Montag"
+  },
+  {
+   "fieldname": "magic_monday_table",
+   "fieldtype": "Table",
+   "options": "Magic Tour Tabel"
+  },
+  {
+   "depends_on": "eval:doc.magic_tour_type==\"Tour f\u00fcr Woche planen\"",
+   "fieldname": "magic_tuesday",
+   "fieldtype": "Section Break",
+   "label": "Dienstag"
+  },
+  {
+   "fieldname": "magic_tuesday_table",
+   "fieldtype": "Table",
+   "options": "Magic Tour Tabel"
+  },
+  {
+   "depends_on": "eval:doc.magic_tour_type==\"Tour f\u00fcr Woche planen\"",
+   "fieldname": "magic_wednesday_section",
+   "fieldtype": "Section Break",
+   "label": "Mittwoch"
+  },
+  {
+   "fieldname": "magic_wednesday_table",
+   "fieldtype": "Table",
+   "options": "Magic Tour Tabel"
+  },
+  {
+   "depends_on": "eval:doc.magic_tour_type==\"Tour f\u00fcr Woche planen\"",
+   "fieldname": "magic_thursday_section",
+   "fieldtype": "Section Break",
+   "label": "Donnerstag"
+  },
+  {
+   "fieldname": "magic_thursday_table",
+   "fieldtype": "Table",
+   "options": "Magic Tour Tabel"
+  },
+  {
+   "depends_on": "eval:doc.magic_tour_type==\"Tour f\u00fcr Woche planen\"",
+   "fieldname": "magic_friday_section",
+   "fieldtype": "Section Break",
+   "label": "Freitag"
+  },
+  {
+   "fieldname": "magic_friday_table",
+   "fieldtype": "Table",
+   "options": "Magic Tour Tabel"
+  },
+  {
+   "fieldname": "magic_tourname",
+   "fieldtype": "Data",
+   "label": "Tourname",
+   "unique": 1
+  },
+  {
+   "fieldname": "tour_laden_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tour laden"
+  },
+  {
+   "description": "Hinweis: Waren werden beim Speichern eingef\u00fcgt und anschlie\u00dfend nicht mehr vom System aktualisiert, au\u00dfer es werden manuell neue Anlieferpunkte in die Tour hinzugef\u00fcgt.",
+   "fieldname": "magic_tour_link",
+   "fieldtype": "Link",
+   "label": "Tour Template",
+   "options": "Magic Tour Template"
+  },
+  {
+   "fieldname": "magic_tour_table_display",
+   "fieldtype": "Table",
+   "label": "Vorschau",
+   "options": "Magic Tour Tabel",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.magic_tour_link && doc.magic_tour_type==\"Tour f\u00fcr Woche planen\"",
+   "fieldname": "magic_monday_check",
+   "fieldtype": "Check",
+   "label": "Montag"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.magic_tour_link && doc.magic_tour_type==\"Tour f\u00fcr Woche planen\"",
+   "fieldname": "magic_tuesday_check",
+   "fieldtype": "Check",
+   "label": "Dienstag"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.magic_tour_link && doc.magic_tour_type==\"Tour f\u00fcr Woche planen\"",
+   "fieldname": "magic_wednesday_check",
+   "fieldtype": "Check",
+   "label": "Mittwoch"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.magic_tour_link && doc.magic_tour_type==\"Tour f\u00fcr Woche planen\"",
+   "fieldname": "magic_thursday_check",
+   "fieldtype": "Check",
+   "label": "Donnerstag"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.magic_tour_link && doc.magic_tour_type==\"Tour f\u00fcr Woche planen\"",
+   "fieldname": "magic_friday_check",
+   "fieldtype": "Check",
+   "label": "Friday"
+  },
+  {
+   "fieldname": "magic_fetch_tour",
+   "fieldtype": "Button",
+   "label": "Tour laden"
+  },
+  {
+   "fieldname": "magic_transport_weight_monday",
+   "fieldtype": "Data",
+   "label": "Transportgewicht der Artikel in kg",
+   "read_only": 1
+  },
+  {
+   "fieldname": "magic_transport_weight_tuesday",
+   "fieldtype": "Data",
+   "label": "Transportgewicht der Artikel in kg",
+   "read_only": 1
+  },
+  {
+   "fieldname": "magic_transport_weight_wednesday",
+   "fieldtype": "Data",
+   "label": "Transportgewicht der Artikel in kg",
+   "read_only": 1
+  },
+  {
+   "fieldname": "magic_transport_weight_thursday",
+   "fieldtype": "Data",
+   "label": "Transportgewicht der Artikel in kg",
+   "read_only": 1
+  },
+  {
+   "fieldname": "magic_transport_weight_friday",
+   "fieldtype": "Data",
+   "label": "Transportgewicht der Artikel in kg",
+   "read_only": 1
+  },
+  {
+   "fieldname": "magic_vehicle_monday",
+   "fieldtype": "Link",
+   "label": "Fahrzeug",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "magic_vehicle_tuesday",
+   "fieldtype": "Link",
+   "label": "Fahrzeug",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "magic_vehicle_wednesday",
+   "fieldtype": "Link",
+   "label": "Fahrzeug",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "magic_vehicle_thursday",
+   "fieldtype": "Link",
+   "label": "Fahrzeug",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "magic_vehicle_friday",
+   "fieldtype": "Link",
+   "label": "Fahrzeug",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "magic_vehicle_template",
+   "fieldtype": "Link",
+   "label": "Fahrzeug",
+   "options": "Warehouse"
+  },
+  {
+   "depends_on": "eval:doc.magic_permissible_load_kg_monday!=0",
+   "fetch_from": "magic_vehicle_monday.custom_magic_permissible_load_kg",
+   "fieldname": "magic_permissible_load_kg_monday",
+   "fieldtype": "Float",
+   "label": "Zul\u00e4ssige Zuladung in kg",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.magic_permissible_load_kg_tuesday!=0",
+   "fetch_from": "magic_vehicle_tuesday.custom_magic_permissible_load_kg",
+   "fieldname": "magic_permissible_load_kg_tuesday",
+   "fieldtype": "Float",
+   "label": "Zul\u00e4ssige Zuladung in kg",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.magic_permissible_load_kg_wednesday!=0",
+   "fetch_from": "magic_vehicle_wednesday.custom_magic_permissible_load_kg",
+   "fieldname": "magic_permissible_load_kg_wednesday",
+   "fieldtype": "Float",
+   "label": "Zul\u00e4ssige Zuladung in kg",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.magic_permissible_load_kg_thursday!=0",
+   "fetch_from": "magic_vehicle_thursday.custom_magic_permissible_load_kg",
+   "fieldname": "magic_permissible_load_kg_thursday",
+   "fieldtype": "Float",
+   "label": "Zul\u00e4ssige Zuladung in kg",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.magic_permissible_load_kg_friday!=0",
+   "fetch_from": "magic_vehicle_friday.custom_magic_permissible_load_kg",
+   "fieldname": "magic_permissible_load_kg_friday",
+   "fieldtype": "Float",
+   "label": "Zul\u00e4ssige Zuladung in kg",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "magic_vehicle_overloaded_monday",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "magic_vehicle_overloaded_monday"
+  },
+  {
+   "default": "0",
+   "fieldname": "magic_vehicle_overloaded_tuesday",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "magic_vehicle_overloaded_tuesday"
+  },
+  {
+   "default": "0",
+   "fieldname": "magic_vehicle_overloaded_wednesday",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "magic_vehicle_overloaded_wednesday"
+  },
+  {
+   "default": "0",
+   "fieldname": "magic_vehicle_overloaded_thursday",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "magic_vehicle_overloaded_thursday"
+  },
+  {
+   "default": "0",
+   "fieldname": "magic_vehicle_overloaded_friday",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "magic_vehicle_overloaded_friday"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Magic Tour",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "magic_monday_date",
+   "fieldtype": "Date",
+   "label": "Datum"
+  },
+  {
+   "fieldname": "magic_tuesday_date",
+   "fieldtype": "Date",
+   "label": "Datum"
+  },
+  {
+   "fieldname": "magic_wednesday_date",
+   "fieldtype": "Date",
+   "label": "Datum"
+  },
+  {
+   "fieldname": "magic_thursday_date",
+   "fieldtype": "Date",
+   "label": "Datum"
+  },
+  {
+   "fieldname": "magic_friday_date",
+   "fieldtype": "Date",
+   "label": "Datum"
+  },
+  {
+   "fieldname": "magic_show_articles_monday",
+   "fieldtype": "Button",
+   "label": "Artikel dieses Tages anzeigen"
+  },
+  {
+   "fieldname": "magic_show_articles_tuesday",
+   "fieldtype": "Button",
+   "label": "Artikel dieses Tages anzeigen"
+  },
+  {
+   "fieldname": "magic_show_articles_wednesday",
+   "fieldtype": "Button",
+   "label": "Artikel dieses Tages anzeigen"
+  },
+  {
+   "fieldname": "magic_show_articles_thursday",
+   "fieldtype": "Button",
+   "label": "Artikel dieses Tages anzeigen"
+  },
+  {
+   "fieldname": "magic_show_articles_friday",
+   "fieldtype": "Button",
+   "label": "Artikel dieses Tages anzeigen"
+  },
+  {
+   "fieldname": "magic_tour_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Art der Tour",
+   "options": "Tour f\u00fcr Datum planen\nTour f\u00fcr Woche planen",
+   "reqd": 1
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "column_break_ocld",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_kkoc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.magic_tour_type==\"Tour f\u00fcr Datum planen\"",
+   "fieldname": "tourenplanung_section",
+   "fieldtype": "Section Break",
+   "label": "Tourenplanung"
+  },
+  {
+   "fieldname": "magic_date_single_tour",
+   "fieldtype": "Date",
+   "label": "Datum"
+  },
+  {
+   "fieldname": "magic_items_table_for_date",
+   "fieldtype": "Table",
+   "options": "Magic Tour Tabel"
+  },
+  {
+   "fieldname": "magic_transport_weight_for_date",
+   "fieldtype": "Data",
+   "label": "Transportgewicht der Artikel in kg",
+   "read_only": 1
+  },
+  {
+   "fieldname": "magic_vehicle_for_date",
+   "fieldtype": "Link",
+   "label": "Fahrzeug",
+   "options": "Warehouse"
+  },
+  {
+   "depends_on": "eval:doc.magic_permissible_load_kg_for_date!=0",
+   "fetch_from": "magic_vehicle_for_date.custom_magic_permissible_load_kg",
+   "fieldname": "magic_permissible_load_kg_for_date",
+   "fieldtype": "Float",
+   "label": "Zul\u00e4ssige Zuladung in kg",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "magic_vehicle_overloaded_for_date",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "magic_vehicle_overloaded_for_date"
+  },
+  {
+   "fieldname": "magic_show_articles_for_date",
+   "fieldtype": "Button",
+   "label": "Artikel dieses Tages anzeigen"
+  },
+  {
+   "fieldname": "magic_add_all_items_for_date",
+   "fieldtype": "Button",
+   "label": "Alle offenen Bedarfsmeldungen hinzuf\u00fcgen"
+  },
+  {
+   "fieldname": "magic_add_all_items_monday",
+   "fieldtype": "Button",
+   "label": "Alle offenen Bedarfsmeldungen hinzuf\u00fcgen"
+  },
+  {
+   "fieldname": "magic_add_all_items_tuesday",
+   "fieldtype": "Button",
+   "label": "Alle offenen Bedarfsmeldungen hinzuf\u00fcgen"
+  },
+  {
+   "fieldname": "magic_add_all_items_wednesday",
+   "fieldtype": "Button",
+   "label": "Alle offenen Bedarfsmeldungen hinzuf\u00fcgen"
+  },
+  {
+   "fieldname": "magic_add_all_items_thursday",
+   "fieldtype": "Button",
+   "label": "Alle offenen Bedarfsmeldungen hinzuf\u00fcgen"
+  },
+  {
+   "fieldname": "magic_add_all_items_friday",
+   "fieldtype": "Button",
+   "label": "Alle offenen Bedarfsmeldungen hinzuf\u00fcgen"
+  },
+  {
+   "fieldname": "magic_pick_items_for_date",
+   "fieldtype": "Button",
+   "label": "Bedarfsmeldungen Pick Liste"
+  },
+  {
+   "fieldname": "magic_pick_items_monday",
+   "fieldtype": "Button",
+   "label": "Bedarfsmeldungen Pick Liste"
+  },
+  {
+   "fieldname": "magic_pick_items_tuesday",
+   "fieldtype": "Button",
+   "label": "Bedarfsmeldungen Pick Liste"
+  },
+  {
+   "fieldname": "magic_pick_items_wednesday",
+   "fieldtype": "Button",
+   "label": "Bedarfsmeldungen Pick Liste"
+  },
+  {
+   "fieldname": "magic_pick_items_thursday",
+   "fieldtype": "Button",
+   "label": "Bedarfsmeldungen Pick Liste"
+  },
+  {
+   "fieldname": "magic_pick_items_friday",
+   "fieldtype": "Button",
+   "label": "Bedarfsmeldungen Pick Liste"
+  },
+  {
+   "fieldname": "custom_magic_driver",
+   "fieldtype": "Data",
+   "label": "FahrerIn"
+  },
+  {
+   "fieldname": "custom_magic_passenger_one",
+   "fieldtype": "Data",
+   "label": "BeifahrerIn 1"
+  },
+  {
+   "fieldname": "custom_magic_passenger_two",
+   "fieldtype": "Data",
+   "label": "BeifahrerIn 2"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.magic_tour_type==\"Tour f\u00fcr Datum planen\"",
+   "fieldname": "custom_magic_notes_section",
+   "fieldtype": "Section Break",
+   "label": "Zus\u00e4tzliche Notizen"
+  },
+  {
+   "fieldname": "custom_magic_notes",
+   "fieldtype": "Text Editor",
+   "label": "Zus\u00e4tzliche Notizen"
+  },
+  {
+   "fieldname": "custom_magic_driver_monday",
+   "fieldtype": "Data",
+   "label": "FahrerIn"
+  },
+  {
+   "fieldname": "custom_magic_shift_monday",
+   "fieldtype": "Data",
+   "label": "Schicht"
+  },
+  {
+   "fieldname": "custom_magic_passenger_one_monday",
+   "fieldtype": "Data",
+   "label": "BeifahrerIn 1"
+  },
+  {
+   "fieldname": "custom_magic_passenger_two_monday",
+   "fieldtype": "Data",
+   "label": "BeifahrerIn 2"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.magic_tour_type==\"Tour f\u00fcr Woche planen\"",
+   "fieldname": "custom_magic_monday_notes_section",
+   "fieldtype": "Section Break",
+   "label": "Zus\u00e4tzliche Notizen Montag"
+  },
+  {
+   "fieldname": "custom_magic_monday_notes",
+   "fieldtype": "Text Editor",
+   "label": "Zus\u00e4tzliche Notizen Montag"
+  },
+  {
+   "fieldname": "custom_magic_driver_tuesday",
+   "fieldtype": "Data",
+   "label": "FahrerIn"
+  },
+  {
+   "fieldname": "custom_magic_shift_tuesday",
+   "fieldtype": "Data",
+   "label": "Schicht"
+  },
+  {
+   "fieldname": "custom_magic_passenger_one_tuesday",
+   "fieldtype": "Data",
+   "label": "BeifahrerIn 1"
+  },
+  {
+   "fieldname": "custom_magic_passenger_two_tuesday",
+   "fieldtype": "Data",
+   "label": "BeifahrerIn 2"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.magic_tour_type==\"Tour f\u00fcr Woche planen\"",
+   "fieldname": "custom_magic_tuesday_notes_section",
+   "fieldtype": "Section Break",
+   "label": "Zus\u00e4tzliche Notizen Dienstag"
+  },
+  {
+   "fieldname": "custom_magic_tuesday_notes",
+   "fieldtype": "Text Editor",
+   "label": "Zus\u00e4tzliche Notizen Dienstag"
+  },
+  {
+   "fieldname": "custom_magic_driver_wednesday",
+   "fieldtype": "Data",
+   "label": "FahrerIn"
+  },
+  {
+   "fieldname": "custom_magic_shift_wednesday",
+   "fieldtype": "Data",
+   "label": "Schicht"
+  },
+  {
+   "fieldname": "custom_magic_passenger_one_wednesday",
+   "fieldtype": "Data",
+   "label": "BeifahrerIn 1"
+  },
+  {
+   "fieldname": "custom_magic_passenger_two_wednesday",
+   "fieldtype": "Data",
+   "label": "BeifahrerIn 2"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "custom_magic_wednesday_notes_section",
+   "fieldtype": "Section Break",
+   "label": "Zus\u00e4tzliche Notizen Mittwoch"
+  },
+  {
+   "depends_on": "eval:doc.magic_tour_type==\"Tour f\u00fcr Woche planen\"",
+   "fieldname": "custom_magic_wednesday_notes",
+   "fieldtype": "Text Editor",
+   "label": "Zus\u00e4tzliche Notizen Mittwoch"
+  },
+  {
+   "fieldname": "custom_magic_driver_thursday",
+   "fieldtype": "Data",
+   "label": "FahrerIn"
+  },
+  {
+   "fieldname": "custom_magic_shift_thursday",
+   "fieldtype": "Data",
+   "label": "Schicht"
+  },
+  {
+   "fieldname": "custom_magic_passenger_one_thursday",
+   "fieldtype": "Data",
+   "label": "BeifahrerIn 1"
+  },
+  {
+   "fieldname": "custom_magic_passenger_two_thursday",
+   "fieldtype": "Data",
+   "label": "BeifahrerIn 2"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.magic_tour_type==\"Tour f\u00fcr Woche planen\"",
+   "fieldname": "custom_magic_thursday_notes_section",
+   "fieldtype": "Section Break",
+   "label": "Zus\u00e4tzliche Notizen Donnerstag"
+  },
+  {
+   "fieldname": "custom_magic_thursday_notes",
+   "fieldtype": "Text Editor",
+   "label": "Zus\u00e4tzliche Notizen Donnerstag"
+  },
+  {
+   "fieldname": "custom_magic_driver_friday",
+   "fieldtype": "Data",
+   "label": "FahrerIn"
+  },
+  {
+   "fieldname": "custom_magic_shift_friday",
+   "fieldtype": "Data",
+   "label": "Schicht"
+  },
+  {
+   "fieldname": "custom_magic_passenger_one_friday",
+   "fieldtype": "Data",
+   "label": "BeifahrerIn 1"
+  },
+  {
+   "fieldname": "custom_magic_passenger_two_friday",
+   "fieldtype": "Data",
+   "label": "BeifahrerIn 2"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.magic_tour_type==\"Tour f\u00fcr Woche planen\"",
+   "fieldname": "custom_magic_friday_notes_section",
+   "fieldtype": "Section Break",
+   "label": "Zus\u00e4tzliche Notizen Freitag"
+  },
+  {
+   "fieldname": "custom_magic_friday_notes",
+   "fieldtype": "Text Editor",
+   "label": "Zus\u00e4tzliche Notizen Freitag"
+  },
+  {
+   "fieldname": "custom_magic_shift",
+   "fieldtype": "Data",
+   "label": "Schicht"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-07-19 13:08:55.291976",
+ "modified_by": "Administrator",
+ "module": "Erpnext Tafel Oesterreich",
+ "name": "Magic Tour",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

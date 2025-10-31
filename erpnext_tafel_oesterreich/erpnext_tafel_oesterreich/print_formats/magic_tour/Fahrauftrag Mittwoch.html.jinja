@@ -1,0 +1,237 @@
+
+
+
+<div id="header-html" class="visible-pdf">
+    {{ letter_head }}
+</div>
+
+
+<div class="pdf-doc">
+
+    <table class="items">
+        <thead>
+            <tr class="spacer-row">
+                <td class="column-1"></td>
+                <td class="column-2"></td>
+            </tr>
+        </thead>
+            <tr class="table-row-item">
+                <td class="column-1"><div class="ten padding-left-8">Name: <b>{{ doc.name }} am Mittwoch den {% if doc.magic_wednesday_date %} {{ doc.magic_wednesday_date }} {% endif %}</b></div></td>
+                <td class="column-2"><div class="ten padding-left-8"></div></td>
+            </tr>
+
+            <tr class="table-row-item">
+                <td class="column-1"><div class="ten padding-left-8">Schicht: <b>{% if doc.custom_magic_shift_wednesday %}{{ doc.custom_magic_shift_wednesday }}{% endif %}</b></div></td>
+                <td class="column-2"><div class="ten padding-left-8"></div></td>
+            </tr>
+
+            <tr class="table-row-item">
+                <td class="column-1"><div class="ten padding-left-8">KFZ: <b>{% if doc.magic_vehicle_wednesday %}{{ doc.magic_vehicle_wednesday }}{% endif %}</b></div></td>
+                <td class="column-2"><div class="ten padding-left-8">KM-Stand Anfang: __________  KM-Stand Ende: __________</div></td>
+            </tr>
+
+            <tr class="table-row-item">
+                <td class="column-1"><div class="ten padding-left-8">FahrerIn: <b>{% if doc.custom_magic_driver_wednesday %}{{ doc.custom_magic_driver_wednesday }}{% endif %}</b></div></td>
+                <td class="column-2"><div class="ten padding-left-8">1. BeifahrerIn: <b>{% if doc.custom_magic_passenger_one_wednesday %}{{ doc.custom_magic_passenger_one_wednesday }}{% endif %}</b></div></td>
+            </tr>
+
+            <tr class="table-row-item">
+                <td class="column-1"><div class="ten padding-left-8"></div></td>
+                <td class="column-2"><div class="ten padding-left-8">2. BeifahrerIn: <b>{% if doc.custom_magic_passenger_two_wednesday %}{{ doc.custom_magic_passenger_two_wednesday }}{% endif %}</b></div></td>
+            </tr>
+    </table>
+
+    {% if doc.custom_magic_wednesday_notes %}
+        <div style="border: 1px solid black; margin-top: 10px;" class="">
+            <p><b>Zusätzliche Notizen (Bitte lesen):</b></p>
+            <br>
+            {{ doc.custom_magic_wednesday_notes }}
+            <br>
+            <p>Startzeit: </p>
+            <p>Endzeit: </p>
+            <br>
+            <p>Danke️ & Gute Fahrt!</p>
+        </div>
+    {% else %}
+        <div style="border: 1px solid black; margin-top: 10px;" class="padding-left-8">
+            <p>Startzeit: </p>
+            <p>Endzeit: </p>
+            <br>
+            <p>Danke️ & Gute Fahrt!</p>
+        </div>
+    {% endif %}
+
+
+    <table class="items" style="margin-top: 10px; border: 1px solid black;">
+    <thead>
+        <tr class="table-row-header">
+            <th class="column-100"><div class="ten padding-left-8"><b>Bestellte Waren:</b></div></th>
+        </tr>
+    </thead>
+        {% for item in doc.magic_wednesday_table %}
+
+            {% if item.magic_items_link %}
+                {% set customer_doc = frappe.get_doc("Customer", item.magic_customer) %}
+
+                <tr class="table-row-item">
+                    <td class="column-100"><b>{{ customer_doc.customer_name }}</b> </td>
+                </tr>
+
+                {% set magic_items_link_doc = frappe.get_doc("Magic Tour Items", item.magic_items_link) %}
+                    <tr class="table-row-item">
+                        <td class="column-100">
+                            {% for magic_item_link in magic_items_link_doc.magic_tour_items_table %}
+                                {{ magic_item_link.magic_qty }} {{ magic_item_link.magic_uom }} {{ magic_item_link.magic_item_name }} <b>|</b>
+                            {% endfor %}
+                        </td>
+                    </tr>
+
+
+            {% endif %}
+
+        {% endfor %}
+    </table>
+
+
+
+    <table class="items" style="margin-top: 10px; border: 1px solid black;">
+    <thead>
+        <tr class="table-row-header">
+            <th class="column-100"><div class="ten padding-left-8"><b>Einzelne Stationen zum Anfahren</b></div></th>
+        </tr>
+    </thead>
+    {% for item in doc.magic_wednesday_table %}
+
+        {% if item.magic_supplier %}
+
+            {% set supplier_doc = frappe.get_doc("Supplier", item.magic_supplier) %}
+
+            <tr class="table-row-item new-tr">
+                <td class="column-100" style="font-size: 30px !important; color: green;">&#9754; Waren einladen</td>
+            </tr>
+
+            <tr class="table-row-item">
+                <td class="column-100">Waren einladen von <b>{{ supplier_doc.supplier_name }}</b> </td>
+            </tr>
+
+
+            {% if supplier_doc.supplier_primary_address %}
+                {% set supplier_addr_doc = frappe.get_doc("Address", supplier_doc.supplier_primary_address) %}
+
+                <tr class="table-row-item">
+                    <td class="twelve column-100"><b>{{ supplier_addr_doc.address_line1 }}, {% if supplier_addr_doc.pincode %} {{ supplier_addr_doc.pincode }} {% endif %} {{ supplier_addr_doc.city }}</b></td>
+                </tr>
+
+                <tr class="table-row-item">
+                    <td class="column-100">Anfahrt: {% if supplier_addr_doc.custom_anfahrtsinfos %} <b>{{ supplier_addr_doc.custom_anfahrtsinfos }}</b> {% endif %}</td>
+                </tr>
+
+            {% endif %}
+
+
+            {% for oeffnungszeit in supplier_doc.custom_oeffnungszeit %}
+                {% if oeffnungszeit.custom_day == 'Mittwoch' %}
+
+                    {% set supplier_contact_doc = 0 %}
+                    {% if oeffnungszeit.custom_contact %}
+                        {% set supplier_contact_doc = frappe.get_doc("Contact", oeffnungszeit.custom_contact) %}
+                    {% endif %}
+
+                    <tr class="table-row-item">
+                        <td class="column-100">Mittwochs von {% if oeffnungszeit.custom_openingtime %} {{ oeffnungszeit.custom_openingtime }} {% endif %} bis {% if oeffnungszeit.custom_closingtime %} {{ oeffnungszeit.custom_closingtime }} {% endif %}
+                        <br>Kontaktperson: <b>{% if supplier_contact_doc.first_name %}{{ supplier_contact_doc.first_name }} {% endif %} {% if supplier_contact_doc.last_name %} {{ supplier_contact_doc.last_name }} {% endif %}</b>
+                        <br>Anmerkung: <b>{% if oeffnungszeit.custom_note %} {{ oeffnungszeit.custom_note }} {% endif %}</b></td>
+                    </tr>
+
+                {% endif %}
+            {% endfor %}
+
+
+        {% endif %}
+
+
+        {% if item.magic_customer %}
+
+
+            {% set customer_doc = frappe.get_doc("Customer", item.magic_customer) %}
+
+            <tr class="table-row-item new-tr">
+                <td class="column-100" style="font-size: 30px !important; color: red;">&#9755; Waren ausladen</td>
+            </tr>
+
+            <tr class="table-row-item">
+                <td class="column-100">Waren ausladen bei <b>{{ customer_doc.customer_name }}</b></td>
+            </tr>
+
+            {% if customer_doc.customer_primary_address %}
+                {% set customer_addr_doc = frappe.get_doc("Address", customer_doc.customer_primary_address) %}
+
+                <tr class="table-row-item">
+                    <td class="twelve column-100"><b>{{ customer_addr_doc.address_line1 }}, {% if customer_addr_doc.pincode %} {{ customer_addr_doc.pincode }} {% endif %} {{ customer_addr_doc.city }}</b></td>
+                </tr>
+
+                <tr class="table-row-item">
+                    <td class="column-100">Anfahrt: {% if customer_addr_doc.custom_anfahrtsinfos %} <b>{{ customer_addr_doc.custom_anfahrtsinfos }}</b> {% endif %}</td>
+                </tr>
+            {% endif %}
+
+
+            {% for oeffnungszeit in customer_doc.custom_oeffnungszeit %}
+                {% if oeffnungszeit.custom_day == 'Mittwoch' %}
+
+                    {% set customer_contact_doc = 0 %}
+                    {% if oeffnungszeit.custom_contact %}
+                        {% set customer_contact_doc = frappe.get_doc("Contact", oeffnungszeit.custom_contact) %}
+                    {% endif %}
+
+                    <tr class="table-row-item">
+                        <td class="column-100">Mittwochs von {% if oeffnungszeit.custom_openingtime %} {{ oeffnungszeit.custom_openingtime }} {% endif %} bis {% if oeffnungszeit.custom_closingtime %} {{ oeffnungszeit.custom_closingtime }} {% endif %}
+                        <br>Kontaktperson: <b>{% if customer_contact_doc.first_name %}{{ customer_contact_doc.first_name }} {% endif %} {% if customer_contact_doc.last_name %} {{ customer_contact_doc.last_name }} {% endif %}</b>
+                        <br>Anmerkung: <b>{% if oeffnungszeit.custom_note %} {{ oeffnungszeit.custom_note }} {% endif %}</b></td>
+                    </tr>
+
+                {% endif %}
+            {% endfor %}
+
+            <tr class="table-row-item">
+                <td class="column-100">Bedarf [kg]:</td>
+            </tr>
+
+            <tr class="table-row-item">
+                <td class="column-100">Geliefert [kg]:</td>
+            </tr>
+
+            <tr class="table-row-item">
+                <td class="column-100">Unterschrift*: ____________________<br>*) Ich bestätige Kühlware unverzüglich kühl zu stellen und Tiefkühlware sofort zu verarbeiten.</td>
+            </tr>
+
+            {% if item.magic_items_link %}
+
+                <tr class="table-row-item">
+                    <td class="column-100"><b>Waren:</b></td>
+                </tr>
+
+
+                {% set magic_items_link_doc = frappe.get_doc("Magic Tour Items", item.magic_items_link) %}
+                <tr class="table-row-item">
+                    <td class="column-100">{% for magic_item_link in magic_items_link_doc.magic_tour_items_table %}
+                    {{ magic_item_link.magic_qty }} {{ magic_item_link.magic_uom }} {{ magic_item_link.magic_item_name }},
+                {% endfor %}</td>
+                </tr>
+            {% endif %}
+
+
+
+
+        {% endif %}
+
+    {% endfor %}
+    </table>
+
+
+
+</div>
+
+<div id="footer-html" class="visible-pdf">
+    <p class="visible-pdf" style="font-size: 8pt; text-align: right;">{{ _("Page {0} of {1}").format('<span class="page"></span>', '<span class="topage"></span>') }}</p>
+</div>

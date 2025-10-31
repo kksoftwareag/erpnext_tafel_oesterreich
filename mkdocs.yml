@@ -1,0 +1,13 @@
+site_name: ERPNext TAFEL OESTERREICH
+theme:
+  name: readthedocs
+
+dev_addr: '0.0.0.0:8100'
+
+plugins:
+    - search
+    - awesome-pages
+    - mermaid2
+
+draft_docs: |
+  drafts/ 

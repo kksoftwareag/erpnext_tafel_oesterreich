@@ -1,0 +1,80 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-04-19 12:45:49.282293",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "magic_item",
+  "magic_description",
+  "magic_best_before_date_plus",
+  "magic_amount_warehouse_unit",
+  "magic_donor_registration_id",
+  "magic_warehouse",
+  "magic_barcode"
+ ],
+ "fields": [
+  {
+   "fieldname": "magic_item",
+   "fieldtype": "Link",
+   "label": "Artikel",
+   "options": "Item"
+  },
+  {
+   "fieldname": "magic_description",
+   "fieldtype": "Small Text",
+   "label": "Beschreibung"
+  },
+  {
+   "fieldname": "magic_best_before_date_plus",
+   "fieldtype": "Date",
+   "label": "MHD+"
+  },
+  {
+   "fieldname": "magic_amount_warehouse_unit",
+   "fieldtype": "Float",
+   "label": "Menge"
+  },
+  {
+   "fieldname": "magic_barcode",
+   "fieldtype": "Barcode",
+   "label": "Barcode"
+  },
+  {
+   "fieldname": "magic_warehouse",
+   "fieldtype": "Link",
+   "label": "Lagerplatz",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "magic_donor_registration_id",
+   "fieldtype": "Link",
+   "label": "Spendererfassung",
+   "options": "Magic Donor Groceries Regestration"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-04-22 15:02:29.175038",
+ "modified_by": "Administrator",
+ "module": "Erpnext Tafel Oesterreich",
+ "name": "Magic Barcode",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

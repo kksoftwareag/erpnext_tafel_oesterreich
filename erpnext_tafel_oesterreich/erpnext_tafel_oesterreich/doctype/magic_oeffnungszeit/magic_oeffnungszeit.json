@@ -1,0 +1,62 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2024-07-18 14:30:02.649593",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "custom_day",
+  "custom_openingtime",
+  "custom_closingtime",
+  "custom_contact",
+  "custom_note"
+ ],
+ "fields": [
+  {
+   "fieldname": "custom_day",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Tag",
+   "options": "Montag\nDienstag\nMittwoch\nDonnerstag\nFreitag\nSamstag\nSonntag\nFeiertags"
+  },
+  {
+   "fieldname": "custom_openingtime",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Von"
+  },
+  {
+   "fieldname": "custom_closingtime",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Bis"
+  },
+  {
+   "fieldname": "custom_contact",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Kontakt",
+   "options": "Contact"
+  },
+  {
+   "fieldname": "custom_note",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Anmerkung"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-18 14:41:15.801352",
+ "modified_by": "Administrator",
+ "module": "Erpnext Tafel Oesterreich",
+ "name": "Magic Oeffnungszeit",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

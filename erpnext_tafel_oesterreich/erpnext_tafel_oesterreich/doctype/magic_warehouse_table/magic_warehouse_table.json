@@ -1,0 +1,39 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-03 10:56:57.041093",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "magic_warehouse",
+  "magic_qty"
+ ],
+ "fields": [
+  {
+   "fieldname": "magic_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Lager",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "magic_qty",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Menge"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-18 12:51:13.270497",
+ "modified_by": "Administrator",
+ "module": "Erpnext Tafel Oesterreich",
+ "name": "Magic Warehouse Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

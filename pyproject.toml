@@ -1,0 +1,48 @@
+[project]
+name = "erpnext_tafel_oesterreich"
+authors = [
+    { name = "K&K Software AG", email = "erpnext-support@kk-software.de"}
+]
+description = "New Frappe App for Die Tafel Oesterreich"
+requires-python = ">=3.11"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    # "frappe~=15.0.0" # Installed and managed by bench.
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+# These dependencies are only installed when developer mode is enabled
+[tool.bench.dev-dependencies]
+mkdocs = "~=1.6.0"
+mkdocs-awesome-pages-plugin = "~=2.9.2"
+mkdocs-mermaid2-plugin = "~=1.1.1"
+
+
+[tool.setuptools]
+py-modules = ['erpnext_tafel_oesterreich']
+
+[tool.ruff]
+line-length = 90
+target-version = "py311"
+lint.select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # isort
+    "I",
+]
+lint.ignore = [
+    "E111",
+    "E114",
+    "E117",
+    "E501"
+]

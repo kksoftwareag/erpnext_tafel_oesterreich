@@ -1,0 +1,26 @@
+[
+ {
+  "description": null,
+  "docstatus": 0,
+  "doctype": "Item Group",
+  "filter_attributes": [],
+  "filter_fields": [],
+  "image": null,
+  "include_descendants": 0,
+  "is_group": 1,
+  "item_group_defaults": [],
+  "item_group_name": "Leergut",
+  "magic_shelf_life_in_days": 0,
+  "modified": "2024-03-14 10:20:18.735366",
+  "name": "Leergut",
+  "old_parent": "Alle Artikelgruppen",
+  "parent_item_group": "Alle Artikelgruppen",
+  "route": "leergut",
+  "show_in_website": 0,
+  "slideshow": null,
+  "taxes": [],
+  "website_specifications": [],
+  "website_title": null,
+  "weightage": 0
+ }
+]

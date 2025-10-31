@@ -1,0 +1,97 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-02 09:22:14.225728",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "magic_so_detail",
+  "magic_item_code",
+  "magic_item_name",
+  "magic_qty",
+  "magic_uom",
+  "magic_total_transport_weight",
+  "magic_sales_order",
+  "magic_delivery_note",
+  "magic_warehouse"
+ ],
+ "fields": [
+  {
+   "fieldname": "magic_item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Artikelcode",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "magic_item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Artikelname",
+   "read_only": 1
+  },
+  {
+   "fieldname": "magic_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Menge"
+  },
+  {
+   "fieldname": "magic_total_transport_weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Transportgewicht gesamt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "magic_uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Einheit",
+   "options": "UOM",
+   "read_only": 1
+  },
+  {
+   "fieldname": "magic_sales_order",
+   "fieldtype": "Link",
+   "label": "aus Auftrag",
+   "options": "Sales Order",
+   "read_only": 1
+  },
+  {
+   "fieldname": "magic_delivery_note",
+   "fieldtype": "Link",
+   "label": "Lieferschein",
+   "options": "Delivery Note",
+   "read_only": 1
+  },
+  {
+   "fieldname": "magic_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Lager",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "magic_so_detail",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Sales Order Item Name",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-11 09:27:23.305478",
+ "modified_by": "Administrator",
+ "module": "Erpnext Tafel Oesterreich",
+ "name": "Magic Tour Items Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

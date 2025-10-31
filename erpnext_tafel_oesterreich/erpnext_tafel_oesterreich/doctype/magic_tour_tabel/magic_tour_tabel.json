@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-04-26 14:45:32.525307",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "magic_tour",
+  "magic_supplier",
+  "magic_customer",
+  "magic_items_link"
+ ],
+ "fields": [
+  {
+   "columns": 3,
+   "fieldname": "magic_supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Abholung",
+   "options": "Supplier"
+  },
+  {
+   "columns": 3,
+   "fieldname": "magic_customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Lieferung",
+   "options": "Customer"
+  },
+  {
+   "columns": 2,
+   "fieldname": "magic_tour",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tour"
+  },
+  {
+   "columns": 2,
+   "fieldname": "magic_items_link",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Waren",
+   "options": "Magic Tour Items",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-04-30 15:47:55.778922",
+ "modified_by": "Administrator",
+ "module": "Erpnext Tafel Oesterreich",
+ "name": "Magic Tour Tabel",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

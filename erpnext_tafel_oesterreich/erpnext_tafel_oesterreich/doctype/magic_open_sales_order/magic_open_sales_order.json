@@ -1,0 +1,47 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-14 13:54:07.370475",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_nfhc",
+  "magic_sales_order",
+  "magic_per_delivered"
+ ],
+ "fields": [
+  {
+   "allow_on_submit": 1,
+   "fieldname": "magic_sales_order",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Bedarfsmeldung",
+   "options": "Sales Order"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "magic_per_delivered",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Auslieferungstand in %"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "section_break_nfhc",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-05-22 10:47:48.896781",
+ "modified_by": "Administrator",
+ "module": "Erpnext Tafel Oesterreich",
+ "name": "Magic Open Sales Order",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,158 @@
+.pdf-doc {
+  font-size: 11px;
+  color: black;
+  padding-top: 60px;
+}
+.padding-left-11 {
+  padding-left: 11px !important;
+}
+.padding-left-8 {
+  padding-left: 8px !important;
+}
+.padding-right-2 {
+  padding-right: 2px !important;
+}
+.padding-right-3 {
+  padding-right: 3px !important;
+}
+.padding-right-11 {
+  padding-right: 11px !important;
+}
+.padding-right-8 {
+  padding-right: 8px !important;
+}
+.align-right {
+  text-align: right !important;
+}
+.pagination {
+  font-size: 8pt !important;
+  width: 100% !important;
+  text-align: right !important;
+}
+.widht-100 {
+  width: 100% !important;
+}
+.description-td {
+  padding-top: 0px !important;
+}
+.ten {
+  font-size: 10px !important;
+}
+.twelve {
+  font-size: 12px !important;
+}
+.company_address {
+  text-decoration: underline;
+  font-size: 8px;
+  margin-bottom: 10px;
+}
+.customer-address {
+  width: 50%;
+  margin-right: 50%;
+  font-size: 11px;
+}
+thead {
+  display: table-header-group !important;
+}
+table {
+  color: black;
+  line-height: 1.428571429;
+  font-size: 10px;
+}
+table th {
+  font-weight: normal;
+}
+.print-format {
+  font-size: 15px;
+}
+.print-format td {
+  padding: 0 !important;
+}
+.print-format th {
+  background-color: transparent !important;
+}
+.quotation-infos {
+  width: 45%;
+  margin-left: 60%;
+  font-size: 11px;
+}
+h1 {
+  font-size: 16px !important;
+  font-weight: bold !important;
+  margin-bottom: 20px !important;
+}
+.quotation-text {
+  margin-top: 75px;
+}
+.items {
+  width: 100%;
+  padding-top: 30px !important;
+}
+.items td {
+  border: none;
+  padding-left: 8px !important;
+}
+.items th {
+  text-align: left;
+  padding: 0 !important;
+}
+.description {
+  font-size: 10px;
+}
+.table-row-header,
+.table-row-header th {
+  padding: 10px 0px 10px 0px !important;
+}
+.new-tr {
+  border-top: 1px solid black;
+  margin-top: 5px;
+}
+.table-row-header th {
+  padding: 10px 0px 10px 0px !important;
+}
+.table-row-item td {
+  padding-top: 10px !important;
+}
+.sum-table {
+  page-break-inside: avoid !important;
+  width: 100%;
+  line-height: 1.75;
+}
+.column-1 {
+  width: 50%;
+}
+.column-100 {
+  width: 100%;
+}
+.column-2 {
+  width: 50%;
+}
+.column-3 {
+  width: 20%;
+  text-align: right;
+}
+.column-4 {
+  width: 10%;
+  text-align: right;
+}
+.column-5 {
+  width: 20%;
+  text-align: right;
+}
+.border-top {
+  border-top: 2px solid #dcdcdc;
+}
+.border-top td {
+  padding-top: 10px !important;
+}
+.conditions {
+  margin-top: 30px;
+}
+.conditions p {
+  margin-top: 10px;
+}
+.agb {
+  margin-top: 20px;
+}
+.ql-editor {
+}

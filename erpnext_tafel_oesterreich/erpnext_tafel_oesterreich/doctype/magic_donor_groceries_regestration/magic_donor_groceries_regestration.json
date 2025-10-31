@@ -1,0 +1,355 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-03-05 10:34:59.058466",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "magic_item_link",
+  "magic_item_name",
+  "magic_description",
+  "magic_supplier_link",
+  "magic_supplier_actual_name",
+  "column_break_tesw",
+  "magic_best_before_date",
+  "magic_best_before_date_plus",
+  "magic_item_maingroup",
+  "magic_secondary_item_group",
+  "magic_temperature_range",
+  "amended_from",
+  "magic_published_in_webshop",
+  "leergut_section",
+  "magic_empties_table",
+  "magic_warehouse_section",
+  "column_break_axwe",
+  "magic_warehouse_uom",
+  "magic_weight_uom",
+  "magic_bundle_consists_of",
+  "magic_amount_warehouse_unit",
+  "magic_warehouse_link",
+  "magic_warehouse_table",
+  "column_break_gncl",
+  "magic_product_weight_per_warehouse_unit",
+  "magic_transport_weight_per_warehouse_unit",
+  "magic_total_transport_weight",
+  "ma\u00dfeinheiten_section",
+  "magic_uoms",
+  "section_break_nzvu",
+  "magic_b2c",
+  "magic_minimum_qty_b2c",
+  "magic_maximum_qty_b2c",
+  "magic_column_break_02",
+  "magic_b2b",
+  "magic_uom_b2b",
+  "magic_minimum_qty_b2b",
+  "magic_maximum_qty_b2b",
+  "optionale_felder_section",
+  "magic_description_box",
+  "magic_image_attachment",
+  "dashboard_tab"
+ ],
+ "fields": [
+  {
+   "fieldname": "magic_best_before_date",
+   "fieldtype": "Date",
+   "label": "MHD",
+   "reqd": 1
+  },
+  {
+   "description": "Damit das Bild im Shop angezeigt werden kann, muss der Haken \"Privat\" rausgenommen werden.",
+   "fieldname": "magic_image_attachment",
+   "fieldtype": "Attach Image",
+   "label": "Bildanhang"
+  },
+  {
+   "fieldname": "magic_warehouse_link",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Lagerort",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "magic_description_box",
+   "fieldtype": "Text Editor",
+   "hidden": 1,
+   "label": "Infos f\u00fcr Shop und Artikelbeschreibung"
+  },
+  {
+   "fieldname": "column_break_axwe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Magic Donor Groceries Regestration",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "optionale_felder_section",
+   "fieldtype": "Section Break",
+   "label": "Optionale Felder"
+  },
+  {
+   "fieldname": "dashboard_tab",
+   "fieldtype": "Tab Break",
+   "label": "Dashboard",
+   "show_dashboard": 1
+  },
+  {
+   "fieldname": "magic_warehouse_uom",
+   "fieldtype": "Link",
+   "label": "Lagereinheit",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "magic_amount_warehouse_unit",
+   "fieldtype": "Float",
+   "label": "Menge (Lagereinheit)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "magic_product_weight_per_warehouse_unit",
+   "fieldtype": "Float",
+   "label": "Produktgewicht in kg je Lagereinheit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "magic_transport_weight_per_warehouse_unit",
+   "fieldtype": "Float",
+   "label": "Transportgewicht je Lagereinheit",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.magic_warehouse_uom==\"Gebinde\"",
+   "fieldname": "magic_bundle_consists_of",
+   "fieldtype": "Small Text",
+   "label": "Gebinde besteht aus"
+  },
+  {
+   "fieldname": "section_break_nzvu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "magic_b2c",
+   "fieldtype": "Heading",
+   "label": "B2C"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "magic_b2b",
+   "fieldtype": "Heading",
+   "label": "B2B"
+  },
+  {
+   "fieldname": "magic_column_break_02",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "magic_minimum_qty_b2c",
+   "fieldtype": "Float",
+   "label": "Minimale Abnahme (f\u00fcr Lagereinheit)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "magic_maximum_qty_b2c",
+   "fieldtype": "Float",
+   "label": "Maximale Abnahme (f\u00fcr Lagereinheit)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "magic_uom_b2b",
+   "fieldtype": "Link",
+   "label": "Abnahmeeinheit",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "magic_minimum_qty_b2b",
+   "fieldtype": "Float",
+   "label": "Minimale Abnahme"
+  },
+  {
+   "fieldname": "magic_maximum_qty_b2b",
+   "fieldtype": "Float",
+   "label": "Maximale Abnahme"
+  },
+  {
+   "fieldname": "column_break_tesw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "magic_warehouse_section",
+   "fieldtype": "Section Break",
+   "label": "Lager-Informationen"
+  },
+  {
+   "fieldname": "column_break_gncl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "magic_item_link",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sammelartikel",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "magic_description",
+   "fieldtype": "Text Editor",
+   "label": "Beschreibung"
+  },
+  {
+   "depends_on": "eval: doc.magic_item_link && doc.magic_best_before_date",
+   "fieldname": "magic_best_before_date_plus",
+   "fieldtype": "Date",
+   "label": "MHD+",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "magic_item_link.item_code",
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Nummernkreis"
+  },
+  {
+   "fieldname": "magic_supplier_actual_name",
+   "fieldtype": "Data",
+   "label": "Spendername",
+   "read_only": 1
+  },
+  {
+   "fieldname": "magic_supplier_link",
+   "fieldtype": "Link",
+   "label": "Spender",
+   "options": "Supplier",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "magic_published_in_webshop",
+   "fieldtype": "Check",
+   "label": "Im Webshop ver\u00f6ffentlicht"
+  },
+  {
+   "fieldname": "magic_item_name",
+   "fieldtype": "Data",
+   "label": "Artikelname"
+  },
+  {
+   "fieldname": "leergut_section",
+   "fieldtype": "Section Break",
+   "label": "Leergut"
+  },
+  {
+   "fieldname": "magic_total_transport_weight",
+   "fieldtype": "Data",
+   "label": "Gesamt-Transport-Gewicht"
+  },
+  {
+   "fieldname": "magic_warehouse_table",
+   "fieldtype": "Table",
+   "label": "Lagerzuordnung",
+   "options": "Magic Warehouse Table"
+  },
+  {
+   "fieldname": "magic_empties_table",
+   "fieldtype": "Table",
+   "options": "Magic Empties Table"
+  },
+  {
+   "fieldname": "magic_item_maingroup",
+   "fieldtype": "Link",
+   "label": "Artikelhauptgruppe",
+   "options": "Item Group",
+   "reqd": 1
+  },
+  {
+   "fieldname": "magic_secondary_item_group",
+   "fieldtype": "Link",
+   "label": "Artikeluntergruppe",
+   "options": "Item Group",
+   "reqd": 1
+  },
+  {
+   "fieldname": "magic_weight_uom",
+   "fieldtype": "Link",
+   "label": "Gewichtsma\u00dfeinheit",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "magic_temperature_range",
+   "fieldtype": "Link",
+   "label": "Temperaturbereich",
+   "options": "Magic Temperature Range"
+  },
+  {
+   "fieldname": "ma\u00dfeinheiten_section",
+   "fieldtype": "Section Break",
+   "label": "Ma\u00dfeinheiten"
+  },
+  {
+   "description": "Werte werden nach dem Speichern gezogen.",
+   "fieldname": "magic_uoms",
+   "fieldtype": "Table",
+   "label": "UOMs",
+   "options": "UOM Conversion Detail"
+  }
+ ],
+ "image_field": "magic_image_attachment",
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "group": "Artikel",
+   "link_doctype": "Item",
+   "link_fieldname": "magic_donor_reference"
+  },
+  {
+   "group": "Lager",
+   "link_doctype": "Stock Entry",
+   "link_fieldname": "magic_donor_reference"
+  },
+  {
+   "group": "Webshop",
+   "link_doctype": "Website Item",
+   "link_fieldname": "magic_donor_reference"
+  },
+  {
+   "group": "Barcode",
+   "link_doctype": "Magic Barcode",
+   "link_fieldname": "magic_donor_registration_id"
+  }
+ ],
+ "modified": "2024-07-16 10:02:48.970169",
+ "modified_by": "Administrator",
+ "module": "Erpnext Tafel Oesterreich",
+ "name": "Magic Donor Groceries Regestration",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

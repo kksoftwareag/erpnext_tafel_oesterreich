@@ -1,0 +1,61 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-04-17 13:19:58.771289",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "anzahl_tage_vor_mhd_section",
+  "magic_days_best_before_plus",
+  "section_break_rkmk",
+  "magic_user_table"
+ ],
+ "fields": [
+  {
+   "fieldname": "anzahl_tage_vor_mhd_section",
+   "fieldtype": "Section Break",
+   "label": "Anzahl Tage vor MHD+"
+  },
+  {
+   "description": "Wenn das MHD+ Anzahl der Tage vor Ablauf ist, so wird eine Mail an die definierten Nutzer geschickt.",
+   "fieldname": "magic_days_best_before_plus",
+   "fieldtype": "Int",
+   "label": "Tage"
+  },
+  {
+   "description": "Hier k\u00f6nnen die Nutzer gepflegt werden, welche \u00fcber die bald verfallenden Produkte benachrichtigt werden sollen.",
+   "fieldname": "section_break_rkmk",
+   "fieldtype": "Section Break",
+   "label": "E-Mails"
+  },
+  {
+   "fieldname": "magic_user_table",
+   "fieldtype": "Table",
+   "label": "Nutzer Tabelle",
+   "options": "Magic E-Mail Table"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-04-19 12:04:31.844932",
+ "modified_by": "Administrator",
+ "module": "Erpnext Tafel Oesterreich",
+ "name": "Magic Best Before Configuration",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

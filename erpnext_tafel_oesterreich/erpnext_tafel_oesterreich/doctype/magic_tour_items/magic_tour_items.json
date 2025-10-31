@@ -1,0 +1,57 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-04-30 15:28:27.786576",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "magic_back_to_tour",
+  "magic_tour",
+  "magic_tour_items_table"
+ ],
+ "fields": [
+  {
+   "fieldname": "magic_tour_items_table",
+   "fieldtype": "Table",
+   "label": "Waren",
+   "options": "Magic Tour Items Table"
+  },
+  {
+   "description": "Bitte \u00fcber diesen Button zur\u00fcck zur Tour, damit die Tour neu geladen wird und sich die Gesamtgewichte aktualisieren.",
+   "fieldname": "magic_back_to_tour",
+   "fieldtype": "Button",
+   "label": "Zur\u00fcck zur Tour"
+  },
+  {
+   "fieldname": "magic_tour",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Tour"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-05-14 10:55:46.529788",
+ "modified_by": "Administrator",
+ "module": "Erpnext Tafel Oesterreich",
+ "name": "Magic Tour Items",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
