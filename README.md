@@ -50,7 +50,7 @@ Die App/Modul kann einer bestehenden ERPNext Instanz hinzugefügt werden.
 * [Die Tafel Österreich](https://tafel-oesterreich.at/)
 * [Austrian Institute of Technology](https://www.ait.ac.at/)
 
-## Ermöglich durch
+## Ermöglicht durch
 
 Das Projekt wurde gefördert durch "Digitalisierungsfonds Arbeit 4.0 der AK Wien"
 

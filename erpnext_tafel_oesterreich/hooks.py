@@ -3,7 +3,7 @@ app_title = "Erpnext Tafel Oesterreich"
 app_publisher = "K&K Software AG"
 app_description = "New Frappe App for Die Tafel Oesterreich"
 app_email = "erpnext-support@kk-software.de"
-app_license = "mit"
+app_license = "GPL-3.0-only"
 # required_apps = []
 
 # Includes in <head>
